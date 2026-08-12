@@ -12,6 +12,8 @@ year: 2026
 order: 50
 featured: false
 accent: '#5f8fb0'
+hero: ./media/metamorph-transform.png
+thumbnail: ./media/metamorph-transform.png
 repo: https://github.com/fisherevans/metamorph
 links:
     - label: live

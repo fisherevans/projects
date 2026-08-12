@@ -12,6 +12,8 @@ year: 2026
 order: 35
 featured: false
 accent: '#6f9a8d'
+hero: ./media/meatbag-list.png
+thumbnail: ./media/meatbag-list.png
 repo: https://github.com/fisherevans/meatbag
 source:
     repo: meatbag

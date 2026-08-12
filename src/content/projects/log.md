@@ -12,6 +12,8 @@ year: 2026
 order: 42
 featured: false
 accent: '#c07a4a'
+hero: ./media/log-index.png
+thumbnail: ./media/log-index.png
 repo: https://github.com/fisherevans/log
 links:
     - label: live

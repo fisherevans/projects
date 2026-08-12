@@ -11,6 +11,8 @@ year: 2026
 order: 52
 featured: false
 accent: '#8faa55'
+hero: ./media/native-garden-browse.png
+thumbnail: ./media/native-garden-browse.png
 # Private repo - no source link.
 source:
     repo: native-garden

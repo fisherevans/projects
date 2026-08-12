@@ -11,6 +11,8 @@ year: 2026
 order: 48
 featured: false
 accent: '#7a8a5a'
+hero: ./media/trmnldash-weather.png
+thumbnail: ./media/trmnldash-weather.png
 repo: https://github.com/fisherevans/trmnl-weather-dash
 source:
     repo: trmnl-weather-dash
