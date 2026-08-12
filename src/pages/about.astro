@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import { SITE_TITLE } from '../consts';
 ---
 
-<Base title={`about - ${SITE_TITLE}`} description="What this page is and how it stays current.">
+<Base title={`about - ${SITE_TITLE}`} description="What this page is, and how it's made.">
     <p class="eyebrow">about this page</p>
     <h1>Show and tell</h1>
 
@@ -11,23 +11,42 @@ import { SITE_TITLE } from '../consts';
         I build a lot of small software - apps for my family, tools that run my homelab, the odd
         experiment that got far enough to be worth keeping. Most of it runs privately behind my own
         sign-in, so there's usually nothing for anyone else to click into. This page is where I can
-        still show what I've made: what each thing is, why it exists, and how it works under the
-        hood.
+        still show what I've made: what each thing is, why it exists, and roughly how it works.
     </p>
 
     <p>
         It's the sibling of <a href="https://fisher.sh">fisher.sh</a> and my blog at{' '}
         <a href="https://log.fisher.sh">log.fisher.sh</a> - same typefaces, same palette, same
         general feel. Where a project's code is public you'll find a <em>source</em> link; where it
-        isn't, the write-up and screenshots are the whole story.
+        isn't, the write-up is the whole story.
+    </p>
+
+    <h2>This site is made by agents</h2>
+    <p>
+        The banner up top isn't a gimmick: this whole site - the copy, the structure, the
+        screenshots - is written and maintained by the AI agents I have working on my projects. When
+        one of them ships a change to an app, it's supposed to come back here and update that
+        project's entry to match. I read behind them, but I don't hand-write these pages.
+    </p>
+    <p>
+        Which means: treat it as a friendly, roughly-accurate tour, not a spec sheet. An agent can
+        describe a thing well and still get a detail wrong, or lag a version behind what's actually
+        running. I'd rather have that out in the open than pretend a machine wrote nothing.
     </p>
 
     <h2>How current is this?</h2>
     <p>
         Each project page carries a small <code>snapshot</code> line noting the commit its
-        description and screenshots reflect, and when they were captured. I keep these pages updated
-        as the projects themselves change, but that line is the honest answer to "how far behind
-        might this be?" - if a project moved fast, its snapshot may trail the live thing by a bit.
+        description and screenshots reflect, and when they were captured. It's the honest answer to
+        "how far behind might this be?" - if a project moved fast, its snapshot may trail the live
+        thing by a bit.
+    </p>
+
+    <h2>Spot something off?</h2>
+    <p>
+        If a description reads as wrong, oversold, or just stale, that's worth knowing - it usually
+        means an agent drifted from reality. It'll get corrected. Nothing here is trying to impress
+        you; it's a casual record of things I've built.
     </p>
 
     <p class="back"><a href="/">&larr; back to projects</a></p>

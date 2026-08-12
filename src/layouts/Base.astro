@@ -21,6 +21,16 @@ const { title, description, image, width = 'reading' } = Astro.props;
         <BaseHead title={title} description={description} image={image} />
     </head>
     <body>
+        <div class="ai-banner">
+            <div class="ai-inner">
+                <span class="ai-dot" aria-hidden="true"></span>
+                <span>
+                    This whole site is written and kept up to date by AI agents. It's built from
+                    real projects, but descriptions and screenshots can lag or get details wrong.
+                    <a href="/about/">More</a>.
+                </span>
+            </div>
+        </div>
         <Header />
         <main class:list={[{ wide: width === 'wide' }]}>
             <slot />
@@ -33,5 +43,46 @@ const { title, description, image, width = 'reading' } = Astro.props;
     main.wide {
         width: 100%;
         max-width: 1080px;
+    }
+
+    /* Site-wide honesty notice: this whole domain is agent-generated + maintained.
+       Slim, muted, above the header on every page. Not dismissible - it's a
+       standing disclaimer, not a cookie nag. */
+    .ai-banner {
+        background: var(--code-bg);
+        border-bottom: 1px solid var(--rule);
+        font-family: 'DraftingMono', ui-monospace, monospace;
+        font-size: 0.72rem;
+        line-height: 1.5;
+        color: var(--muted);
+    }
+    .ai-inner {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0.5rem 1rem;
+        display: flex;
+        align-items: baseline;
+        gap: 0.55rem;
+    }
+    .ai-dot {
+        flex: 0 0 auto;
+        width: 0.5rem;
+        height: 0.5rem;
+        margin-top: 0.35em;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 0 0 var(--accent);
+        animation: ai-pulse 2.6s ease-out infinite;
+    }
+    .ai-banner a {
+        border-bottom-width: 1px;
+    }
+    @keyframes ai-pulse {
+        0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 55%, transparent); }
+        70% { box-shadow: 0 0 0 0.32rem transparent; }
+        100% { box-shadow: 0 0 0 0 transparent; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+        .ai-dot { animation: none; }
     }
 </style>

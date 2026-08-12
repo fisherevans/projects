@@ -54,6 +54,38 @@ refresh screenshots if the UI changed, and bump `source.commit` + `source.captur
 from the app" as the same failure mode as any doc drift. The pointer from the source repo
 back to here lives in that repo's own `CLAUDE.md`.
 
+## Voice and altitude
+
+This site is public and openly agent-made (there's a standing banner saying so). Write like
+Fisher would in a blog post, not like a product landing page:
+
+- **Casual and dry.** Peer-to-peer, matter-of-fact, a little wry. Match the voice in his blog
+  posts at `log.fisher.sh` and the reference entries (`quill.md`, `otium.md`). No enthusiasm
+  markers, no exclamation points, no em dashes (use a spaced hyphen ` - `).
+- **Not braggy, don't oversell.** These are personal projects, not products. Describe what a
+  thing does and the one genuinely interesting engineering bit; skip superlatives ("powerful",
+  "seamless", "cutting-edge", "revolutionary"), skip growth/impact framing, skip "the only X
+  that Y." If a project is a small toy, say so - `status: experiment` and a light touch beat
+  inflating it.
+- **Honest about being AI-made.** The reader knows a machine wrote this. Don't posture as
+  authoritative; a plainly-described project that admits its rough edges reads better than a
+  polished oversell. Understate rather than overclaim.
+- **Concrete over grand.** "renders each page as a PNG the device polls" beats "a powerful
+  rendering engine." Name the real mechanism; drop the adjectives.
+
+Calibration: a good entry could sit inside one of Fisher's blog posts without a tonal seam. If
+it reads like marketing copy, it's wrong.
+
+## If you spot a discrepancy, flag it to Fisher
+
+You maintain these pages, but you don't get to quietly paper over problems. If while working
+here you notice an entry that's **wrong, stale, or oversold** - a description that no longer
+matches the app, a screenshot from an old version, a claim that overstates what the thing does
+- fix what you can and **surface it to Fisher** rather than leaving it or silently rewriting
+history. A short note in your turn-end summary is enough ("otium's entry described the old
+feed model; updated it to the Sections/Topics tree"). He'd rather hear about drift than have it
+buried. This is the same "surface friction, don't absorb it" duty as the nottingham-cloud repo.
+
 ## Adding or updating a project
 
 1. Copy an existing file in `src/content/projects/` as a template (`quill.md` and
