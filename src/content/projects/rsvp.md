@@ -11,6 +11,8 @@ year: 2026
 order: 45
 featured: false
 accent: '#c25b5b'
+hero: ./media/rsvp-event.png
+thumbnail: ./media/rsvp-event.png
 repo: https://github.com/fisherevans/rsvp
 source:
     repo: rsvp

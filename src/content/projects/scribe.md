@@ -11,6 +11,8 @@ year: 2026
 order: 40
 featured: false
 accent: '#b8794a'
+hero: ./media/scribe-editor.png
+thumbnail: ./media/scribe-editor.png
 repo: https://github.com/fisherevans/scribe
 source:
     repo: scribe
