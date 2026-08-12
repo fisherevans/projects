@@ -1,0 +1,472 @@
+/*
+ * log.fisher.sh - shared theme with fisher.sh.
+ * Marauder serif for prose, DraftingMono for code.
+ * Same dark + orange palette + dotted-underline + highlight-bg link style.
+ */
+
+@font-face {
+    font-family: 'Marauder';
+    src: url('/fonts/Marauder.woff2') format('woff2-variations'),
+         url('/fonts/Marauder.woff2') format('woff2');
+    font-weight: 100 900;
+    font-stretch: 25% 200%;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Marauder';
+    src: url('/fonts/Marauder-Italic.woff2') format('woff2-variations'),
+         url('/fonts/Marauder-Italic.woff2') format('woff2');
+    font-weight: 100 900;
+    font-stretch: 25% 200%;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Newsreader';
+    src: url('/fonts/Newsreader.woff2') format('woff2-variations'),
+         url('/fonts/Newsreader.woff2') format('woff2');
+    font-weight: 200 800;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Newsreader';
+    src: url('/fonts/Newsreader-Italic.woff2') format('woff2-variations'),
+         url('/fonts/Newsreader-Italic.woff2') format('woff2');
+    font-weight: 200 800;
+    font-style: italic;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'DraftingMono';
+    src: url('/fonts/DraftingMono-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'DraftingMono';
+    src: url('/fonts/DraftingMono-Italic.woff2') format('woff2');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'DraftingMono';
+    src: url('/fonts/DraftingMono-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'DraftingMono';
+    src: url('/fonts/DraftingMono-BoldItalic.woff2') format('woff2');
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+}
+
+:root {
+    --bg: #1c1a17;
+    --fg: #e8dec8;
+    --muted: #c1b3a8;
+    --accent: #e89b4b;
+    --hover: #1c1a17;
+    --hover-bg: #e57806;
+
+    --rule: #34302a;
+    --code-bg: rgba(232, 222, 200, 0.06);
+    --code-border: rgba(232, 222, 200, 0.12);
+
+    --font-size-base: 18px;
+    --font-size-h1: 3rem;
+    --font-size-h2: 2.5rem;
+    --font-size-h3: 1.75rem;
+    --font-size-code: 0.8em;
+    --max-width: 800px;
+    --content-pad-x: 1.25rem;
+    --line-height-body: 1.75;
+
+    --opsz-body: 14;
+    --opsz-h1: 72;
+    --opsz-h2: 20;
+    --opsz-h3: 14;
+    --weight-body: 400;
+    --weight-h1: 800;
+    --weight-h2: 600;
+    --weight-h3: 500;
+    --weight-link: 600;
+
+    --bullet-glyph: '\203A';
+    --bullet-projects-glyph: '\203A';
+    --bullet-size: 1em;
+    --bullet-offset-x: 0em;
+    --bullet-offset-y: 0em;
+
+    /* The one sans-serif in the stack: used only for the small uppercase
+       eyebrow labels (e.g. "Latest post"), where the slab-serif DraftingMono
+       read as a serif. System font - no download. */
+    --sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Light mode. Dark is the default (above); this overrides the palette when the
+   theme toggle (Header.astro) sets data-theme="light" on <html>. A warm paper
+   look that keeps the orange accent - darkened so links clear contrast on a
+   light ground. The no-flash setter lives in BaseHead.astro. */
+:root[data-theme='light'] {
+    --bg: #f7f2e8;
+    --fg: #2b2722;
+    --muted: #6f665a;
+    --accent: #bd5f08;
+    --hover: #fbf7ee;
+    --hover-bg: #e57806;
+
+    --rule: #e3dac8;
+    --code-bg: rgba(43, 39, 34, 0.05);
+    --code-border: rgba(43, 39, 34, 0.12);
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Newsreader', 'Georgia', 'Iowan Old Style', 'Charter', serif;
+    font-weight: var(--weight-body);
+    font-variation-settings: 'opsz' var(--opsz-body);
+    font-synthesis: none;
+    font-optical-sizing: auto;
+    font-variant-ligatures: common-ligatures discretionary-ligatures contextual;
+    font-feature-settings: 'liga' 1, 'clig' 1, 'dlig' 1, 'calt' 1, 'kern' 1;
+    font-kerning: normal;
+    background: var(--bg);
+    color: var(--fg);
+    line-height: var(--line-height-body);
+    font-size: var(--font-size-base);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-wrap: break-word;
+}
+
+main {
+    width: var(--max-width);
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 2.5em var(--content-pad-x) 5em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Marauder', 'Georgia', serif;
+    color: var(--fg);
+    line-height: 1.15;
+    margin: 1.5em 0 0.5em;
+    letter-spacing: -0.01em;
+}
+h1 { font-size: var(--font-size-h1); font-weight: var(--weight-h1); font-variation-settings: 'opsz' var(--opsz-h1); margin-top: 0; letter-spacing: -0.02em; }
+h2 { font-size: var(--font-size-h2); font-weight: var(--weight-h2); font-variation-settings: 'opsz' var(--opsz-h2); }
+h3 { font-size: var(--font-size-h3); font-weight: var(--weight-h3); font-variation-settings: 'opsz' var(--opsz-h3); }
+h4, h5, h6 { font-size: 1.1rem; font-weight: 700; font-variation-settings: 'opsz' 10; }
+
+/* Heading anchors: a hover-revealed link icon that copies a deep link to the
+ * section. Markup is appended by rehype-autolink-headings (astro.config.mjs);
+ * the click-to-copy behavior lives in BlogPost.astro. */
+.prose :is(h1, h2, h3, h4) { scroll-margin-top: 1.5rem; }
+.heading-anchor {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    margin-left: 0.35em;
+    padding: 0;
+    color: var(--muted);
+    border-bottom: none !important;
+    vertical-align: middle;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 160ms ease-out, color 160ms ease-out;
+}
+.heading-anchor svg { width: 0.62em; height: 0.62em; }
+.prose :is(h1, h2, h3, h4):hover .heading-anchor { opacity: 0.6; }
+.heading-anchor:hover,
+.heading-anchor:focus-visible {
+    opacity: 1;
+    color: var(--accent);
+    background: transparent !important;
+    box-shadow: none !important;
+}
+/* "Copied" confirmation toggled by the click handler. */
+.heading-anchor::after {
+    content: 'Copied';
+    position: absolute;
+    left: 50%;
+    bottom: 100%;
+    transform: translateX(-50%) translateY(-4px);
+    padding: 2px 7px;
+    border-radius: 4px;
+    background: var(--fg);
+    color: var(--bg);
+    font-family: 'DraftingMono', ui-monospace, monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 140ms ease-out;
+}
+.heading-anchor.copied { opacity: 1; color: var(--accent); }
+.heading-anchor.copied::after { opacity: 1; }
+/* On touch devices there's no hover, so keep the icon faintly visible. */
+@media (hover: none) {
+    .heading-anchor { opacity: 0.4; }
+}
+
+p { margin: 0 0 1em; }
+
+strong, b { font-weight: 700; }
+em, i { font-style: italic; color: var(--muted); }
+
+/* Links: same treatment as fisher.sh - dotted underline + accent color,
+ * solid + hover bg highlight on interaction. */
+a, a:visited {
+    color: var(--accent);
+    font-weight: var(--weight-link);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--accent);
+    padding-bottom: 1px;
+    background-color: transparent;
+    box-shadow: 0 0 0 0 transparent;
+    transition:
+        color 220ms ease-out,
+        border-bottom-color 220ms ease-out,
+        border-bottom-style 220ms ease-out,
+        background-color 220ms ease-out,
+        box-shadow 220ms ease-out;
+}
+a:hover, a:focus-visible {
+    color: var(--hover);
+    border-bottom: 1px solid var(--hover);
+    background-color: var(--hover-bg);
+    box-shadow: 0.15em 0 0 var(--hover-bg), -0.15em 0 0 var(--hover-bg);
+    outline: none;
+}
+
+/* Lists with angle bullets matching fisher.sh. */
+ul, ol {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1em;
+}
+li {
+    position: relative;
+    padding: 0.05rem 0 0.05rem 1.5em;
+    margin: 0;
+}
+ul > li::before {
+    content: var(--bullet-glyph);
+    position: absolute;
+    left: calc(0.25rem + var(--bullet-offset-x));
+    top: var(--bullet-offset-y);
+    font-size: var(--bullet-size);
+    line-height: var(--line-height-body);
+    color: var(--accent);
+}
+ul ul > li::before {
+    content: var(--bullet-projects-glyph);
+    opacity: 0.7;
+}
+ol {
+    counter-reset: ol-counter;
+}
+ol > li {
+    counter-increment: ol-counter;
+}
+ol > li::before {
+    content: counter(ol-counter) ".";
+    position: absolute;
+    left: 0;
+    font-variant-numeric: tabular-nums;
+    color: var(--accent);
+}
+
+/* Code: DraftingMono for inline + blocks. The Shiki theme handles
+ * syntax colors; we just override the background to match our palette
+ * and add a subtle border for separation. */
+code, kbd, samp {
+    font-family: 'DraftingMono', ui-monospace, 'SF Mono', 'Menlo', monospace;
+    font-size: var(--font-size-code);
+}
+:not(pre) > code {
+    padding: 0.1em 0.4em;
+    background: var(--code-bg);
+    border: 1px solid var(--code-border);
+    border-radius: 4px;
+    color: var(--fg);
+}
+pre {
+    font-family: 'DraftingMono', ui-monospace, 'SF Mono', 'Menlo', monospace;
+    background: var(--code-bg) !important;
+    border: 1px solid var(--code-border);
+    border-radius: 6px;
+    padding: 1rem 1.25rem;
+    margin: 1em 0;
+    overflow-x: auto;
+    font-size: var(--font-size-code);
+    line-height: 1.5;
+    tab-size: 4;
+}
+pre code,
+pre.astro-code code {
+    background: transparent;
+    border: none;
+    padding: 0;
+    font-size: 1em;
+}
+
+/* Shiki dual-theme token colors. defaultColor:false (astro.config.mjs) leaves
+ * the color to CSS: dark by default, light when [data-theme="light"]. The block
+ * background stays var(--code-bg) from the `pre` rule above. */
+.astro-code,
+.astro-code span {
+    color: var(--shiki-dark);
+}
+:root[data-theme='light'] .astro-code,
+:root[data-theme='light'] .astro-code span {
+    color: var(--shiki-light);
+}
+
+/* Tables */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1.25em 0;
+    font-size: 0.95em;
+}
+th, td {
+    text-align: left;
+    padding: 0.5em 0.75em;
+    border-bottom: 1px solid var(--rule);
+}
+th {
+    font-weight: 700;
+    color: var(--accent);
+    border-bottom: 2px solid var(--rule);
+}
+
+/* Blockquote */
+blockquote {
+    margin: 1.25em 0;
+    padding: 0.25em 0 0.25em 1.25em;
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    font-style: italic;
+}
+blockquote p:last-child { margin-bottom: 0; }
+
+/* Horizontal rule + images */
+hr {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 2em 0;
+}
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+}
+
+::selection {
+    background: var(--accent);
+    color: var(--bg);
+}
+
+/* Tag/project chips on the post title block + listings */
+.chip {
+    display: inline-block;
+    padding: 0.15em 0.6em;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    color: var(--muted);
+    font-size: 0.75em;
+    text-transform: lowercase;
+    letter-spacing: 0.02em;
+    background: transparent;
+}
+a.chip, a.chip:visited {
+    color: var(--muted);
+    border: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    box-shadow: none;
+    padding-bottom: 0.15em;
+}
+a.chip:hover, a.chip:focus-visible {
+    color: var(--fg);
+    border-color: var(--accent);
+    background: transparent;
+    box-shadow: none;
+}
+
+/* Small uppercase eyebrow label (e.g. "Latest post", "Older posts", section
+ * kickers on /follow). Sans, not the code font - reads as a header. */
+.eyebrow {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 1.1em;
+}
+
+/* Reusable surface card (friends rows, follow blocks). The accent-on-hover
+ * variant lives with each component; this is the base chrome. */
+.card {
+    background: var(--code-bg);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+}
+
+/* Theme-toggle icons (button chrome is in Header.astro). Show the mode you'll
+ * switch TO: sun while dark, moon while light. Kept global - they key off the
+ * data-theme attribute on <html>, above any component scope. */
+.theme-toggle svg { width: 1.15rem; height: 1.15rem; }
+.theme-toggle .sun { display: block; }
+.theme-toggle .moon { display: none; }
+:root[data-theme='light'] .theme-toggle .sun { display: none; }
+:root[data-theme='light'] .theme-toggle .moon { display: block; }
+
+/* Pagefind UI overrides */
+:root {
+    --pagefind-ui-primary: var(--accent);
+    --pagefind-ui-text: var(--fg);
+    --pagefind-ui-background: var(--bg);
+    --pagefind-ui-border: var(--rule);
+    --pagefind-ui-tag: var(--code-bg);
+    --pagefind-ui-border-width: 1px;
+    --pagefind-ui-border-radius: 6px;
+    --pagefind-ui-font: 'Marauder', serif;
+}
+
+@media (max-width: 700px) {
+    :root {
+        --font-size-base: 19px;
+        --font-size-h1: 2.6rem;
+        --font-size-h2: 1.5rem;
+        --font-size-h3: 1.2rem;
+    }
+    main { padding: 1.75em var(--content-pad-x) 3em; }
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+

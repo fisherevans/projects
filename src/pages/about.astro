@@ -1,0 +1,42 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<Base title={`about - ${SITE_TITLE}`} description="What this page is and how it stays current.">
+    <p class="eyebrow">about this page</p>
+    <h1>Show and tell</h1>
+
+    <p>
+        I build a lot of small software - apps for my family, tools that run my homelab, the odd
+        experiment that got far enough to be worth keeping. Most of it runs privately behind my own
+        sign-in, so there's usually nothing for anyone else to click into. This page is where I can
+        still show what I've made: what each thing is, why it exists, and how it works under the
+        hood.
+    </p>
+
+    <p>
+        It's the sibling of <a href="https://fisher.sh">fisher.sh</a> and my blog at{' '}
+        <a href="https://log.fisher.sh">log.fisher.sh</a> - same typefaces, same palette, same
+        general feel. Where a project's code is public you'll find a <em>source</em> link; where it
+        isn't, the write-up and screenshots are the whole story.
+    </p>
+
+    <h2>How current is this?</h2>
+    <p>
+        Each project page carries a small <code>snapshot</code> line noting the commit its
+        description and screenshots reflect, and when they were captured. I keep these pages updated
+        as the projects themselves change, but that line is the honest answer to "how far behind
+        might this be?" - if a project moved fast, its snapshot may trail the live thing by a bit.
+    </p>
+
+    <p class="back"><a href="/">&larr; back to projects</a></p>
+</Base>
+
+<style>
+    .back {
+        font-family: 'DraftingMono', ui-monospace, monospace;
+        font-size: 0.85rem;
+        margin-top: 2.5rem;
+    }
+</style>

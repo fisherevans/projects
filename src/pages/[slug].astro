@@ -1,0 +1,221 @@
+---
+import { render } from 'astro:content';
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Freshness from '../components/Freshness.astro';
+import { listProjects, statusLabel, type Project } from '../lib/projects';
+import { SITE_TITLE } from '../consts';
+
+export async function getStaticPaths() {
+    const projects = await listProjects();
+    return projects.map((entry) => ({
+        params: { slug: entry.id },
+        props: { entry },
+    }));
+}
+
+interface Props {
+    entry: Project;
+}
+
+const { entry } = Astro.props;
+const { data } = entry;
+const { Content } = await render(entry);
+
+const captured = (d?: Date) =>
+    d
+        ? d.toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'short',
+              day: 'numeric',
+              timeZone: 'UTC',
+          })
+        : undefined;
+
+const accent = data.accent;
+---
+
+<Base title={`${data.name} - ${SITE_TITLE}`} description={data.summary}>
+    <p class="back"><a href="/">&larr; all projects</a></p>
+
+    <article>
+        <header class="head">
+            <div class="titleblock">
+                <h1>{data.name}</h1>
+                <p class="tagline">{data.tagline}</p>
+                <div class="meta">
+                    <span class="chip status">{statusLabel(data.status)}</span>
+                    {data.year && <span class="chip">{data.year}</span>}
+                    {data.tech.map((t) => <span class="chip">{t}</span>)}
+                </div>
+                <div class="links">
+                    {data.repo && (
+                        <a class="cta" href={data.repo}>
+                            source &rarr;
+                        </a>
+                    )}
+                    {data.links.map((l) => (
+                        <a class="cta" href={l.href}>
+                            {l.label} &rarr;
+                        </a>
+                    ))}
+                </div>
+            </div>
+        </header>
+
+        {
+            data.hero ? (
+                <figure class="hero">
+                    <Image src={data.hero} alt={`${data.name} hero`} width={1200} height={630} />
+                </figure>
+            ) : (
+                <div
+                    class="hero placeholder"
+                    style={accent ? `--tile-accent: ${accent}` : undefined}
+                    aria-hidden="true"
+                >
+                    <span class="glyph">{data.name.trim().charAt(0).toUpperCase()}</span>
+                </div>
+            )
+        }
+
+        <div class="prose">
+            <Content />
+        </div>
+
+        {
+            data.screenshots.length > 0 && (
+                <section class="shots">
+                    <h2>Screenshots</h2>
+                    <div class="shot-grid">
+                        {data.screenshots.map((shot) => (
+                            <figure class="shot">
+                                <Image src={shot.src} alt={shot.caption ?? `${data.name} screenshot`} width={900} height={600} />
+                                <figcaption>
+                                    {shot.caption && <span class="cap">{shot.caption}</span>}
+                                    {(shot.captured || shot.commit) && (
+                                        <span class="shotmeta">
+                                            {captured(shot.captured)}
+                                            {shot.commit ? ` · ${shot.commit}` : ''}
+                                        </span>
+                                    )}
+                                </figcaption>
+                            </figure>
+                        ))}
+                    </div>
+                </section>
+            )
+        }
+
+        {data.source && <Freshness source={data.source} repoUrl={data.repo} />}
+    </article>
+</Base>
+
+<style>
+    .back {
+        font-family: 'DraftingMono', ui-monospace, monospace;
+        font-size: 0.85rem;
+        margin: 0 0 1.5rem;
+    }
+    .head {
+        margin-bottom: 1.75rem;
+    }
+    .titleblock h1 {
+        margin-bottom: 0.2em;
+    }
+    .tagline {
+        font-size: 1.3rem;
+        color: var(--muted);
+        font-style: italic;
+        margin: 0 0 1rem;
+    }
+    .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1.1rem;
+    }
+    .chip.status {
+        color: var(--accent);
+        border-color: var(--accent);
+    }
+    .links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.1rem;
+    }
+    .cta,
+    .cta:visited {
+        font-family: 'DraftingMono', ui-monospace, monospace;
+        font-size: 0.85rem;
+        border-bottom: 1px solid var(--accent);
+    }
+    .hero {
+        margin: 0 0 2rem;
+        border: 1px solid var(--rule);
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    .hero :global(img) {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 0;
+    }
+    .hero.placeholder {
+        --tile-accent: var(--accent);
+        aspect-ratio: 1200 / 420;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: radial-gradient(
+            120% 120% at 30% 20%,
+            color-mix(in srgb, var(--tile-accent) 24%, var(--bg)) 0%,
+            var(--bg) 72%
+        );
+    }
+    .hero.placeholder .glyph {
+        font-family: 'Marauder', serif;
+        font-weight: 800;
+        font-variation-settings: 'opsz' 72;
+        font-size: 5rem;
+        color: color-mix(in srgb, var(--tile-accent) 70%, var(--fg));
+        opacity: 0.85;
+    }
+    .shots {
+        margin-top: 2.5rem;
+    }
+    .shot-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 1.25rem;
+    }
+    .shot {
+        margin: 0;
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        overflow: hidden;
+        background: var(--code-bg);
+    }
+    .shot :global(img) {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 0;
+        border-bottom: 1px solid var(--rule);
+    }
+    .shot figcaption {
+        padding: 0.6rem 0.8rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+    }
+    .shot .cap {
+        font-size: 0.9rem;
+    }
+    .shot .shotmeta {
+        font-family: 'DraftingMono', ui-monospace, monospace;
+        font-size: 0.68rem;
+        color: var(--muted);
+    }
+</style>

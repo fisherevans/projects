@@ -1,0 +1,23 @@
+{
+  "name": "projects-fisher-sh",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "projects.fisher.sh - a show-and-tell of things Fisher builds.",
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^6.0.1",
+    "@astrojs/sitemap": "^3.7.3",
+    "astro": "^6.4.2",
+    "sharp": "^0.34.3"
+  }
+}

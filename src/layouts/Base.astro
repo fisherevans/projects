@@ -1,0 +1,36 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+    title: string;
+    description: string;
+    image?: string;
+    // 'reading' = the shared 800px column (detail/about pages).
+    // 'wide'    = a roomier column for the project grid.
+    width?: 'reading' | 'wide';
+}
+
+const { title, description, image, width = 'reading' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <BaseHead title={title} description={description} image={image} />
+    </head>
+    <body>
+        <Header />
+        <main class:list={[{ wide: width === 'wide' }]}>
+            <slot />
+        </main>
+        <Footer />
+    </body>
+</html>
+
+<style>
+    main.wide {
+        max-width: 1080px;
+    }
+</style>

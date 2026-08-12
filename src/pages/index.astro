@@ -1,0 +1,72 @@
+---
+import Base from '../layouts/Base.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { listProjects } from '../lib/projects';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+const projects = await listProjects();
+---
+
+<Base title={SITE_TITLE} description={SITE_DESCRIPTION} width="wide">
+    <section class="intro">
+        <p class="eyebrow">things fisher builds</p>
+        <h1>Projects</h1>
+        <p class="lede">
+            A running catalog of what I make - apps for my family, tools for my homelab, and
+            experiments that got far enough to be worth showing. Click any of them to read what it
+            is and how it works. Most run privately, so these are show-and-tell, not sign-ups.
+        </p>
+    </section>
+
+    {
+        projects.length === 0 ? (
+            <p class="empty">No projects yet. Check back soon.</p>
+        ) : (
+            <ul class="grid" role="list">
+                {projects.map((project) => (
+                    <li>
+                        <ProjectCard project={project} />
+                    </li>
+                ))}
+            </ul>
+        )
+    }
+</Base>
+
+<style>
+    .intro {
+        margin-bottom: 2.5rem;
+    }
+    .lede {
+        color: var(--muted);
+        font-size: 1.15rem;
+        line-height: 1.6;
+        max-width: 40rem;
+    }
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem;
+        margin: 0;
+        padding: 0;
+    }
+    .grid > li {
+        padding: 0;
+        margin: 0;
+        display: flex;
+    }
+    .grid > li::before {
+        content: none;
+    }
+    .grid > li > :global(a) {
+        width: 100%;
+    }
+    .empty {
+        color: var(--muted);
+    }
+    @media (max-width: 480px) {
+        .grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

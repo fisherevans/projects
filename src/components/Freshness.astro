@@ -1,0 +1,85 @@
+---
+// Renders the "snapshot freshness" line on a detail page: which commit of the
+// source repo this description + screenshots reflect, and when it was captured.
+// Purpose is twofold - it tells a human how current the page is, and it tells a
+// maintaining agent exactly where to diff forward from (the changelog entry +
+// commit). Links only resolve for public repos; for private ones it stays text.
+import type { Project } from '../lib/projects';
+
+interface Props {
+    source: NonNullable<Project['data']['source']>;
+    repoUrl?: string; // public GitHub repo URL, if the project has one
+}
+
+const { source, repoUrl } = Astro.props;
+
+const captured = source.captured
+    ? source.captured.toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric',
+          timeZone: 'UTC',
+      })
+    : undefined;
+
+// Build GitHub links only when we have a public repo URL to hang them off.
+const commitUrl = repoUrl && source.commit ? `${repoUrl}/commit/${source.commit}` : undefined;
+const changelogUrl =
+    repoUrl && source.changelog ? `${repoUrl}/blob/main/${source.changelog}` : undefined;
+---
+
+{
+    (source.commit || captured) && (
+        <p class="freshness">
+            <span class="label">snapshot</span>
+            {source.commit && (
+                <span>
+                    reflects{' '}
+                    {source.repo ? <code>{source.repo}</code> : null}
+                    {source.repo ? '@' : ''}
+                    {commitUrl ? (
+                        <a href={commitUrl}>
+                            <code>{source.commit}</code>
+                        </a>
+                    ) : (
+                        <code>{source.commit}</code>
+                    )}
+                </span>
+            )}
+            {captured && <span>captured {captured}</span>}
+            {changelogUrl && (
+                <span>
+                    <a href={changelogUrl}>changelog</a>
+                </span>
+            )}
+        </p>
+    )
+}
+
+<style>
+    .freshness {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem 0.9rem;
+        align-items: baseline;
+        font-family: 'DraftingMono', ui-monospace, monospace;
+        font-size: 0.72rem;
+        color: var(--muted);
+        margin: 0.75rem 0 0;
+    }
+    .freshness .label {
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--accent);
+    }
+    .freshness code {
+        font-size: 0.95em;
+        background: var(--code-bg);
+        border: 1px solid var(--code-border);
+        border-radius: 4px;
+        padding: 0.05em 0.35em;
+    }
+    .freshness a {
+        border-bottom-width: 1px;
+    }
+</style>
