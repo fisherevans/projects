@@ -11,6 +11,8 @@ year: 2026
 order: 100
 featured: true
 accent: '#c98a2b'
+hero: ./media/quill-workshop.png
+thumbnail: ./media/quill-workshop.png
 # Private repo - no source link.
 source:
     repo: quill

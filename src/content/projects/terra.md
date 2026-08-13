@@ -11,6 +11,8 @@ year: 2026
 order: 80
 featured: true
 accent: '#6b9a52'
+hero: ./media/terra-climate.png
+thumbnail: ./media/terra-climate.png
 # Private repo - no source link.
 source:
     repo: relocation-explorer
