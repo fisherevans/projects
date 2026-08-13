@@ -18,6 +18,7 @@ repo: https://github.com/fisherevans/metamorph
 links:
     - label: live
       href: https://metamorph.fisher.sh
+blogTag: tools
 source:
     repo: metamorph
     commit: 805d511

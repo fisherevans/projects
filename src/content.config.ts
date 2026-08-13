@@ -43,6 +43,13 @@ const projects = defineCollection({
                     .array(z.object({ label: z.string(), href: z.string().url() }))
                     .default([]),
 
+                // Cross-link to writing on the blog. Set to an EXISTING log.fisher.sh
+                // tag slug (the blog uses topical tags - "gamedev", "tools",
+                // "smart-home" - not per-project tags). The detail page renders a
+                // "Related on the blog" link to log.fisher.sh/tags/<blogTag>/. Leave
+                // unset when no blog tag fits, so the link never 404s.
+                blogTag: z.string().optional(),
+
                 // Freshness contract: what commit of the source repo this entry's
                 // description + screenshots reflect. Rendered visibly so a human
                 // (and an agent) can see how stale the snapshot is, and diff the

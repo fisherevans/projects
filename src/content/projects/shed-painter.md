@@ -11,6 +11,7 @@ year: 2026
 order: 30
 featured: false
 accent: '#6ba3a0'
+blogTag: maker-stuff
 hero: ./media/shed-painter-planner.png
 thumbnail: ./media/shed-painter-planner.png
 # Lives inside a private homelab repo, LAN-only - no source or live link.

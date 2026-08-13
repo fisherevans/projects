@@ -12,6 +12,7 @@ year: 2026
 order: 72
 featured: true
 accent: '#c98a4a'
+blogTag: tools
 hero: ./media/quiver-index.png
 thumbnail: ./media/quiver-index.png
 # Lives inside a private homelab repo - no source link.

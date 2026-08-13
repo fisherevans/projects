@@ -59,6 +59,11 @@ const accent = data.accent;
                             {l.label} &rarr;
                         </a>
                     ))}
+                    {data.blogTag && (
+                        <a class="cta" href={`https://log.fisher.sh/tags/${data.blogTag}/`}>
+                            related on the blog &rarr;
+                        </a>
+                    )}
                 </div>
             </div>
         </header>
