@@ -37,6 +37,16 @@ gets out of the way.
   profile gets a per-device API key stored on the TV and mapped server-side to a
   Jellyfin user.
 
+## Using it
+
+Two audiences, two deliberately different front ends. The kids client is stripped to almost
+nothing: it shows only what's been approved, and each kid's TV holds a per-device key so a
+child never meets a login screen - power on, pick something, watch. No passwords, no browsing
+past the fence, nothing to get lost in. The parent side is the opposite - a full admin app for
+working through the real Jellyfin catalog and deciding what's visible, where the friction of
+authenticating and curating actually belongs. The split is the whole point: the person doing
+the gatekeeping gets the controls, and the kid gets a remote that can't do the wrong thing.
+
 ## Notes
 
 It's a personal home-server project - Go backend, distroless multi-arch image, built to

@@ -38,6 +38,22 @@ so the comparison is explicit, adjustable, and repeatable.
   cost breakdowns) make the trade-offs between two finalists legible, which is where
   this kind of decision actually gets made.
 
+## Using it
+
+- Weights are sliders you drag, and the ranking re-sorts live right next to them as you
+  move - no submit, no reload - so you can feel how much a given priority actually swings
+  the order. Committing the weights is a separate Save step that re-ranks the whole app.
+- Scored places show up as photo cards or a dense sortable table; you sort by the total
+  or any single category, and one red-to-green color ramp is reused across every cell,
+  badge, and at-a-glance fingerprint strip so it all reads the same way.
+- Comparing pins one place as a fixed reference column and measures up to three others
+  against it side by side. The best value in each row is highlighted, and the highlight
+  flips for metrics where lower is better, so "best" always means better.
+- The charts are hand-drawn SVG - climate bands, a cost meter centered on the reference,
+  a "days per year above X" slider - each with its own "vs reference" overlay, for the
+  trade-offs that don't collapse into a single score. The whole view state lives in the
+  URL, so a particular comparison is just a link.
+
 ## Notes
 
 It's a client-heavy React/TypeScript app with a data pipeline feeding the rubric, run

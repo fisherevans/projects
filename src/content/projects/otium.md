@@ -39,6 +39,22 @@ a session from your sources, and it shows its work on why each item made the cut
   dark patterns. The app "remembers" what you've seen so it doesn't re-serve it, and
   otherwise stays out of the way.
 
+## Using it
+
+- A session starts by answering "how much time do you have," picking a scope, and
+  tapping Begin - three screens that each fit without scrolling and mostly advance on a
+  single tap. Nothing loads until you've said how long you want to read.
+- You move through one card at a time on a locked scroll-snap. Advancing past something
+  you didn't open *is* the skip, so there's no separate skip button and no stack to blur
+  through.
+- There's deliberately no timer, unread count, or progress bar during a session. An
+  earlier countdown got cut because watching it felt like racing a clock. The only
+  persistent control is "End session."
+- Every card carries a quiet one-line reason it surfaced, and a "Why this?" tap opens
+  the full breakdown - which source, how fresh, how it's weighted. When your time is up
+  the reel freezes on the current item and drops in an end-card instead of yanking you
+  out, then shows a plain recap of where the time went. No score, no "come back soon."
+
 ## Where it's going
 
 It's mid-way through a v2 redesign that reorganizes everything into a Sections and Topics

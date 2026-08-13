@@ -43,6 +43,18 @@ share the same container.
 - **Device-aware output.** A device profile carries size, palette, and rotation;
   the same layout targets a large TRMNL X or a smaller TRMNL OG.
 
+## The feel
+
+The unusual part is that there's almost nothing to interact with. It's an ambient panel
+you glance at on the way past, not something you operate - you configure it once in YAML
+and then never touch it again. So every design call is about what reads at arm's length on
+a slow, 4-bit greyscale screen: solid silhouettes instead of anti-aliased edges that turn
+to mush under quantization, hand-picked greys that survive the palette crush, and
+density-shifted chart fills so a bar stays legible whether it lands in a bright or dark
+region of the panel. Composing the panels is a YAML tree of vstacks and hstacks because
+laying out an ambient display is a decision you make once, not something you drag around.
+It's built to be seen, not used.
+
 ## Notes
 
 Designed around the 4-bit target - solid silhouettes over semi-transparency,

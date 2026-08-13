@@ -42,6 +42,23 @@ with you a piece at a time.
 - **Runs on my cluster.** The web service is deployed on Kubernetes behind my own single
   sign-on.
 
+## Using it
+
+You read a bloom top-down, one node at a time. Everything starts collapsed - the root is a
+one-sentence summary in the author's voice, and you expand only the branches that earn your
+attention. A summary node opens into sub-branches; a passage node shows just its highlighted
+phrases collapsed, and the full paragraphs with those phrases marked when you expand it.
+Concept terms in the text are clickable - tap one and a popover scrolls you back to where it
+was first introduced. The point is reading at your own depth: skim the summaries, drill in
+where you're curious, skip the rest, instead of grinding front to back.
+
+`@bloom` turns that into something live. Instead of one precomputed tree, the bot reads a
+piece with you - it posts a short chunk plus labeled buttons (go deeper, tangent, outside
+context) and branches from whichever you tap. Old buttons never expire, so you can scroll back
+to any earlier point and take it a different direction; the thread grows into a forum-shaped
+tree of how you actually read it. It feels less like querying a chatbot and more like reading
+with someone in the room you can keep poking.
+
 ## Notes
 
 The bot is a deliberate re-think of the original: instead of precomputing one fixed analysis

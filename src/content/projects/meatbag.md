@@ -43,6 +43,20 @@ in the list, not in the scrollback.
   are content-addressed blobs on disk, and secrets go to the macOS Keychain or
   `0600` files on headless Linux - the backend is chosen at build time.
 
+## Using it
+
+The difference from an agent just typing steps at you is that the work has a home.
+Instead of scrolling back through chat to find which step you were on and what the
+agent needed, you open the list in a browser and it's all laid out: the items in
+order, what's done, what's blocked on you. Each thing you have to do is a typed
+input - a text field, a file upload, a secret box that stores to the keychain
+instead of getting pasted into chat, or a plain approve/deny for a gated action -
+so the form is exactly the shape of the step. Because it's event-driven, checking
+an item off or submitting an input wakes the agent immediately; it isn't sitting
+there polling, and you don't have to go back to the chat and say "done, keep
+going." The instructions live in the list, so if you walk away and come back an
+hour later you pick up exactly where you left off.
+
 ## Notes
 
 It ships as a Go binary with an embedded React UI and a background daemon; `make

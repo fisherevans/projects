@@ -42,6 +42,22 @@ The generation runs as a pipeline, not a single prompt:
 - **A reader built for the couch.** Books render in 9:16 portrait so they read
   naturally held upright on a phone, which is how they actually get used at bedtime.
 
+## Using it
+
+- Making a book is one text box - describe what you want - plus a few taps to pick a
+  style and a reading length. Length is set in minutes ("bedtime standard" is the
+  default), not page count, because minutes is how you actually decide at bedtime.
+- The words come first, and free. It drafts the whole story and shows you every page's
+  text, the title, and an estimated read-aloud time before anything is drawn - with a
+  plain "nothing has been drawn yet." Illustrating is a separate button that shows the
+  dollar cost, so you never pay for art on a story you didn't want.
+- Reading is full-screen 9:16 with tap zones (left half back, right half forward) and a
+  soft crossfade between pages. It's built to be held upright in one hand in a dark
+  room, not clicked through like a slideshow.
+- Text sits directly on the art. When the auto-placement fights the picture you can drag
+  the block, nudge individual lines, or recolor the ink per page - and hand edits are
+  kept, never silently recomputed.
+
 ## Notes
 
 It's a single-user app - a Go backend with an embedded SPA and SQLite, running on my

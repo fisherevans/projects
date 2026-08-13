@@ -45,6 +45,18 @@ unravels. It's deliberately built to feel like a game you'd play on a Game Boy A
 - **Pixel art, mostly hand-tuned.** The look is bought-and-heavily-modified sprite work pushed
   toward a consistent retro style; the devlog is largely a trail of art and animation passes.
 
+## The feel
+
+The Game Boy Advance form factor isn't nostalgia dressing, it's the constraint
+everything else answers to. The whole game renders to a 240x160 canvas and reads five
+inputs - A, B, the D-pad, Start, Select - and capping resolution and controls that hard
+is deliberate: it keeps scope honest, forces the mechanics to stay legible at a glance,
+and means it plays the same on a handheld as it does on a desktop. The other rule I hold
+myself to is that a 15-minute sitting should earn real progress - it's a game you pick up
+between things, not one that wants your whole evening. Combat is where "easy to learn,
+hard to master" has to pay off: you pick skills turn by turn, then land them on timing,
+so a fight is a few clean decisions rather than a menu you grind through.
+
 ## Notes
 
 It's a hobby project and openly a work in progress - the devlog exists mostly so I can look back

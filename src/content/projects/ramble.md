@@ -39,6 +39,19 @@ paraphrased you.
   composer processes it immediately. You can also edit directly, which promotes your
   typed text to first-class, locked source material.
 
+## Using it
+
+The whole loop is built for a phone in one hand. You hit the mic and talk - no blank page, no
+keyboard - and the pauses in your speech become the chunk breaks, so the shape of how you
+thought lands in the tape without you formatting anything. When you want a draft, the composer
+runs and you read the result like a pull request: passages are tinted by provenance (verbatim,
+lightly edited, or composer glue), and tapping one shows the word diff and the source tape in
+context. You comment on a passage or leave a general note and the composer reworks it, or you
+edit inline, which promotes your typed text to locked first-class source. Reviewing it like
+code is the deliberate part - you never have to take on faith that it sounds like you, you can
+see exactly which words are yours and which the model bridged, and bounce the draft if the
+provenance doesn't check out.
+
 ## Notes
 
 A Go binary serves the API and the embedded React UI; all state is JSON files on disk,

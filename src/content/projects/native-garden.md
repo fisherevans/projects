@@ -40,6 +40,20 @@ actually enjoy using," with the visual front-end doing the work a spreadsheet ca
 - **Compare.** Put a handful of candidates side by side with the trait meters aligned so
   differences read instantly.
 
+## Using it
+
+The loop is browse, favorite, compare - closer to shopping than querying a database, on
+purpose. Planning a bed is a visual, spatial problem: you're picturing what a corner
+looks like in July, not reading a table of bloom dates. So each plant leads with a big
+photo and the scale glyph, because "3 ft spread" means nothing until you see the
+silhouette against a human figure and realize it'll swallow whatever you put next to it.
+The filters cover the decisions that actually gate a choice - will the deer eat it, does
+it bloom when everything else has stopped, will it take over - not every column in the
+schema. Collections are boards you drop candidates into, and the bloom-coverage chart is
+the part a spreadsheet can't do: it surfaces the two weeks in August where a "blooms all
+season" planting quietly goes bare. The whole point was to make trait data feel like
+flipping through a lookbook instead of reading a table.
+
 ## Notes
 
 One Go binary serves the built React SPA and a small JSON API. The ~50-record catalog is

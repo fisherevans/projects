@@ -44,6 +44,19 @@ doesn't ask readers to make an account.
 - **A shared design system.** Light and dark themes and a custom typeface are shared
   with my main site, so the two read as one identity rather than two templates.
 
+## Using it
+
+Reading is the plain part, done carefully: serif body type, a light/dark toggle
+that matches my main site, and search that feels instant because Pagefind ships the
+index to the browser - you start typing and results show up, no round-trip to a
+server. Commenting is where friction usually creeps in, and the deliberate call is
+to not make you make an account. You sign in with the Bluesky handle you already
+have, so there's a real name and avatar behind each comment without me running a
+password database or handing readers off to a comment SaaS. Reusing an identity
+someone already trusts is a much lower bar than "create a login to leave one
+comment," and the comments still live in my own D1 rather than inside somebody
+else's embedded widget.
+
 ## Notes
 
 The pattern I keep coming back to here is doing the "dynamic" bits as edge Workers

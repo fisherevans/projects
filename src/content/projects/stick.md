@@ -40,6 +40,23 @@ outrun the compute available to it.
 - **Consumer owns durable state.** Idle sessions get evicted; the caller treats that as normal
   and rehydrates from its own store.
 
+## Building against it
+
+There's no UI, so the ergonomics live in the shape of the API a consuming app writes
+against, and the goal was that integrating should feel boring. You present one bearer
+token, POST a turn to a session key, and read frames back off the same response - `token`
+for streamed text, `tool_start`/`tool_end` if you want to show a pending state,
+`structured_output` for machine-readable results, and exactly one terminal
+`turn_completed` or `error` that closes the stream. A caller that only wants final text
+buffers the tokens and ignores the rest. The semaphore is what makes it safe to build
+against without thinking about capacity: hold a stick to run, release it when the turn
+ends, and if the pool is full your turn queues instead of failing - so a consumer never
+has to write its own backpressure or retry-on-overload. Structured output is the other
+deliberate bet: you declare output tools with JSON schemas and the runtime validates the
+agent's calls in-band, so a declared schema is a contract you can parse against, not prose
+you have to scrape. And since the consumer owns durable state, an evicted idle session is
+a non-event - you rehydrate from your own store, which keeps the mental model small.
+
 ## Notes
 
 It's internal infrastructure, not a user-facing app - no login flow, just per-consumer

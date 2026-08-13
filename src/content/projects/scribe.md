@@ -42,6 +42,20 @@ preserving anything it doesn't have a dedicated editor for as raw, editable fiel
   my homelab it's the reference app secured against a self-hosted Hydra and locked to an
   admin group.
 
+## Using it
+
+Open a post and you get a real block editor - slash commands, tables, callouts,
+drag-to-reorder, a bubble toolbar for links - not a giant textarea of raw markdown
+and not a generic key/value form. The editor is shaped to the content: a blog post
+edits like a document, tags get a tag manager, and anything Scribe has no dedicated
+editor for stays as plain editable fields instead of being hidden or reshaped.
+Paste or drag an image and it doesn't fire off an upload immediately - it sits in a
+staging state where you name it and pick a destination first, so you're not
+littering object storage with `pasted-image-1.png`. Underneath, everything
+round-trips markdown byte-for-byte, so the editor is a view over your files rather
+than a format that slowly rewrites them - hand-edit the same markdown in a text
+editor and Scribe won't fight you on the next save.
+
 ## Notes
 
 Go service over a Git repo checkout plus a private notes store, with a React + Vite +

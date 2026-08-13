@@ -45,6 +45,17 @@ browser; no data leaves the page.
   Buffers before being stuffed into the URL, keeping that blob small even for
   multi-step pipelines.
 
+## Using it
+
+You stack steps and watch the output change as you go - the input flows down the pipeline
+live, so building a transform is just adding a step and seeing what falls out the bottom.
+The real payoff is define-once, rerun-on-anything: the moment a pipeline does what you
+want, its config is already in the URL, so a working transform is a bookmark. Save the
+"decode our log format" chain once and next week you paste a fresh payload into it instead
+of reconstructing six steps from memory. And because nothing leaves the browser, it's fine
+to paste something sensitive - the URL carries the steps, never the data, so a saved
+pipeline is safe to reshare while whatever you ran through it stays yours.
+
 ## Notes
 
 Extending it is a matter of adding an `ActionCode` to the protobuf model,
