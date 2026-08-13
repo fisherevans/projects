@@ -111,10 +111,18 @@ and stamp its `captured`/`commit` to match the app version you shot.
 
 ## Blog integration
 
-`src/pages/projects.json.ts` emits `/projects.json` - the machine-readable index the blog
-(`log.fisher.sh`) fetches at build time to render inline project cards. Keep its field
-shape stable; the blog depends on the field names (`slug`, `name`, `tagline`, `summary`,
-`tech`, `status`, `url`, `repo`, `thumbnail`).
+Two directions, both intentionally simple:
+
+- **Blog -> project:** `src/pages/projects.json.ts` emits `/projects.json` - the machine-
+  readable index the blog (`log.fisher.sh`) fetches at build time to render inline project
+  cards. Keep its field shape stable; the blog depends on the field names (`slug`, `name`,
+  `tagline`, `summary`, `tech`, `status`, `url`, `repo`, `thumbnail`).
+- **Project -> blog:** the optional `blogTag` frontmatter field. The blog uses **topical**
+  tags (`gamedev`, `tools`, `smart-home`, `maker-stuff`, ...), not per-project tags, so set
+  `blogTag` to an *existing* tag slug that fits the project; the detail page then shows a
+  "related on the blog" link to `log.fisher.sh/tags/<blogTag>/`. Leave it unset when no tag
+  fits - the link is only rendered when set, so it never 404s. (Verify a tag resolves before
+  setting it: `curl -o /dev/null -w '%{http_code}' https://log.fisher.sh/tags/<tag>/`.)
 
 ## Build, run, deploy
 
