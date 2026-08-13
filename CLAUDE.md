@@ -54,6 +54,12 @@ refresh screenshots if the UI changed, and bump `source.commit` + `source.captur
 from the app" as the same failure mode as any doc drift. The pointer from the source repo
 back to here lives in that repo's own `CLAUDE.md`.
 
+**This repo is PUBLIC.** Anything committed here is on public GitHub. Do not add entries or
+assets for things that must stay private. In particular, the homelab itself (`nottingham-cloud`)
+has an in-depth showcase page, but it is **private** and lives in the nottingham-cloud repo
+(hosted behind SSO on Quiver) - do NOT create a `nottingham-cloud` entry in this public catalog.
+The `private/` path is gitignored here as a backstop.
+
 ## What a strong entry covers - three pillars
 
 An entry is not a feature list. Fisher puts real thought into *what* he builds, *why*, and -

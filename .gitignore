@@ -13,3 +13,6 @@ node_modules/
 .DS_Store
 .vscode/
 *.log
+
+# never commit private page sources here - this repo is PUBLIC (they go in nottingham-cloud)
+private/
