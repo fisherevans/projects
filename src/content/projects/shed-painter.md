@@ -18,6 +18,7 @@ thumbnail: ./media/shed-painter-planner.png
 source:
     repo: nottingham-cloud
     commit: 71ae272
+    path: containers/quiver/apps/shed-painter
     captured: 2026-08-12
 ---
 

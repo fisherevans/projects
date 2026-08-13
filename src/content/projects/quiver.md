@@ -19,6 +19,7 @@ thumbnail: ./media/quiver-index.png
 source:
     repo: nottingham-cloud
     commit: 4ce9c28
+    path: containers/quiver
     captured: 2026-08-12
 ---
 

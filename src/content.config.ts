@@ -60,6 +60,10 @@ const projects = defineCollection({
                         commit: z.string().optional(), // short SHA the snapshot reflects
                         changelog: z.string().optional(), // path to changelog entry in that repo
                         captured: z.coerce.date().optional(),
+                        // For a project that lives in a subdirectory of a monorepo
+                        // (e.g. quiver in nottingham-cloud), the path prefix to scope
+                        // drift to. Leave unset for a whole-repo project.
+                        path: z.string().optional(),
                     })
                     .optional(),
 
