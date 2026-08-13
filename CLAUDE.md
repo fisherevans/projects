@@ -54,6 +54,42 @@ refresh screenshots if the UI changed, and bump `source.commit` + `source.captur
 from the app" as the same failure mode as any doc drift. The pointer from the source repo
 back to here lives in that repo's own `CLAUDE.md`.
 
+## What a strong entry covers - three pillars
+
+An entry is not a feature list. Fisher puts real thought into *what* he builds, *why*, and -
+critically - *how it feels to use*. A good page carries all three, with genuine weight on the
+third:
+
+1. **What it is.** The honest one-liner and the shape of the thing. Covered by the tagline,
+   summary, and the intro paragraph.
+
+2. **Why it exists.** The actual itch - the specific friction or want that made this worth
+   building, not a generic problem statement. "I wanted to read *less*, on purpose" beats "a
+   feed reader." This is where the personal motivation lives (kept safe per the leak rules).
+
+3. **How you use it, and why it's built to feel that way.** This is the pillar most write-ups
+   skip and the one Fisher cares about most. Don't just say what the app does - say how a person
+   *engages* with it, and why the ergonomics were chosen. The attention to detail is the point:
+   - **The interaction, described.** What does the user actually do - tap, dictate, drag, orbit,
+     glance? What's the primary loop, and what did the design optimize for (speed? calm? a phone
+     in one hand at bedtime?).
+   - **The deliberate ergonomic calls.** Name the choices that look small but aren't: 9:16
+     portrait because it's read held upright at bedtime; time-boxed sessions so it can't become
+     an infinite scroll; a "new layout" button floating on the canvas so you never scroll to
+     reroll; edge pieces rendered at half-width so the plan matches the real boards. Say *why*
+     each choice makes the thing nicer to use.
+   - **Usability, not just functionality.** Intuitiveness, friendliness, the empty state, the
+     defaults, what it *doesn't* make you do. If a decision reduced friction or respected the
+     user's time/attention/context, that's worth a sentence.
+
+   A good way in: pick the 2-3 UX decisions you'd defend in a design review and explain the
+   reasoning. If an entry only explains the tech and never how it feels to use, it's missing
+   the pillar Fisher most wants shown.
+
+Practically: the `## How it works` section can carry mechanism, but make sure the body also
+speaks to the *experience* - either woven in or as its own beat (some entries use a `## Using
+it` / `## The feel` section). Screenshots help here, but the words have to do the work too.
+
 ## Voice and altitude
 
 This site is public and openly agent-made (there's a standing banner saying so). Write like
