@@ -11,8 +11,8 @@ year: 2026
 order: 90
 featured: true
 accent: '#5f8f7a'
-hero: ./media/otium-session.png
-thumbnail: ./media/otium-session.png
+hero: ./media/otium-hero.png
+thumbnail: ./media/otium-hero.png
 repo: https://github.com/fisherevans/otium
 source:
     repo: otium
