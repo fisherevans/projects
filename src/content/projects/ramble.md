@@ -11,11 +11,13 @@ year: 2026
 order: 58
 featured: false
 accent: '#b06a8a'
+hero: ./media/ramble-streams.png
+thumbnail: ./media/ramble-streams.png
 # Private repo - no source link.
 source:
     repo: ramble
     commit: 686ac89
-    captured: 2026-08-12
+    captured: 2026-08-14
 ---
 
 Ramble is a writing tool for people who think out loud. Instead of staring at a blank

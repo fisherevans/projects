@@ -11,14 +11,14 @@ year: 2026
 order: 90
 featured: true
 accent: '#5f8f7a'
-hero: ./media/otium-welcome.png
-thumbnail: ./media/otium-welcome.png
+hero: ./media/otium-session.png
+thumbnail: ./media/otium-session.png
 repo: https://github.com/fisherevans/otium
 source:
     repo: otium
     commit: 007283c
     changelog: changelog/2026-08-12-daily-use-ux-pass.md
-    captured: 2026-08-12
+    captured: 2026-08-14
 ---
 
 Otium is a reader for people who want to read *less*, on purpose. Most feed apps are

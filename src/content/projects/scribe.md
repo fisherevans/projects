@@ -17,7 +17,7 @@ repo: https://github.com/fisherevans/scribe
 source:
     repo: scribe
     commit: f88f821
-    captured: 2026-08-12
+    captured: 2026-08-14
 ---
 
 Scribe is a publishing client I built for my own blog. Pages CMS lets you define a site

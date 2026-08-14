@@ -11,11 +11,13 @@ year: 2026
 order: 70
 featured: false
 accent: '#4a86b8'
+hero: ./media/bloom-compose.png
+thumbnail: ./media/bloom-compose.png
 repo: https://github.com/fisherevans/bloom
 source:
     repo: bloom
     commit: 5953ff1
-    captured: 2026-08-12
+    captured: 2026-08-14
 draft: false
 ---
 
