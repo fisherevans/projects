@@ -11,6 +11,8 @@ year: 2026
 order: 70
 featured: false
 accent: '#4a86b8'
+hero: ./media/bloom-hero.png
+thumbnail: ./media/bloom-hero.png
 repo: https://github.com/fisherevans/bloom
 source:
     repo: bloom

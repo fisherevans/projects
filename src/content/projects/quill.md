@@ -11,14 +11,14 @@ year: 2026
 order: 100
 featured: true
 accent: '#c98a2b'
-hero: ./media/quill-workshop.png
-thumbnail: ./media/quill-workshop.png
+hero: ./media/quill-hero.png
+thumbnail: ./media/quill-hero.png
 # Private repo - no source link.
 source:
     repo: quill
     commit: 8f1ae85
     changelog: changelog/2026-08-12-subject-diversity-guard.md
-    captured: 2026-08-12
+    captured: 2026-08-14
 ---
 
 Quill is a picture-book studio I built for my own kids. You give it a premise - a
