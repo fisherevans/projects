@@ -16,9 +16,9 @@ thumbnail: ./media/quill-hero.png
 # Private repo - no source link.
 source:
     repo: quill
-    commit: 8f1ae85
-    changelog: changelog/2026-08-12-subject-diversity-guard.md
-    captured: 2026-08-14
+    commit: 2e3ae5c
+    changelog: changelog/2026-08-14-react-app-and-workshop-flow.md
+    captured: 2026-08-16
 ---
 
 Quill is a picture-book studio I built for my own kids. You give it a premise - a
@@ -44,9 +44,11 @@ The generation runs as a pipeline, not a single prompt:
 
 ## Using it
 
-- Making a book is one text box - describe what you want - plus a few taps to pick a
-  style and a reading length. Length is set in minutes ("bedtime standard" is the
-  default), not page count, because minutes is how you actually decide at bedtime.
+- Making a book is a short guided flow, one choice per screen: describe the idea, then
+  pick the illustration style, the author's voice (each shown with a couple of sample
+  lines so you can choose it by ear), and the art direction (with a small preview of how
+  it stages a page), then a reading length. Length is set in minutes ("bedtime standard"
+  is the default), not page count, because minutes is how you actually decide at bedtime.
 - The words come first, and free. It drafts the whole story and shows you every page's
   text, the title, and an estimated read-aloud time before anything is drawn - with a
   plain "nothing has been drawn yet." Illustrating is a separate button that shows the
@@ -60,6 +62,8 @@ The generation runs as a pipeline, not a single prompt:
 
 ## Notes
 
-It's a single-user app - a Go backend with an embedded SPA and SQLite, running on my
-homelab's Kubernetes cluster, locked to just me. It isn't a product and isn't for
-sale; it exists so I can make my kids a specific book on a specific evening.
+It's a single-user app - a Go backend with an embedded React front end and SQLite,
+running on my homelab's Kubernetes cluster and locked to just me. The front end
+installs to a phone's home screen like a native app, and a read book stays readable
+offline. It isn't a product and isn't for sale; it exists so I can make my kids a
+specific book on a specific evening.
