@@ -95,7 +95,14 @@ const accent = data.accent;
                     <div class="shot-grid">
                         {data.screenshots.map((shot) => (
                             <figure class="shot">
-                                <Image src={shot.src} alt={shot.caption ?? `${data.name} screenshot`} width={900} height={600} />
+                                {/* Width only - height is inferred from the source so a
+                                    portrait shot (a phone UI, a modal) isn't center-cropped
+                                    to 3:2 with its top and bottom silently cut off. The tile
+                                    is half a column wide, so link the original for anything
+                                    with readable UI text in it. */}
+                                <a href={shot.src.src} target="_blank" rel="noopener">
+                                    <Image src={shot.src} alt={shot.caption ?? `${data.name} screenshot`} width={900} />
+                                </a>
                                 <figcaption>
                                     {shot.caption && <span class="cap">{shot.caption}</span>}
                                     {(shot.captured || shot.commit) && (
@@ -194,6 +201,9 @@ const accent = data.accent;
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
         gap: 1.25rem;
+        /* Tiles keep their natural height instead of stretching to the tallest
+           in the row, now that shots can be any aspect ratio. */
+        align-items: start;
     }
     .shot {
         margin: 0;
@@ -208,6 +218,7 @@ const accent = data.accent;
         height: auto;
         border-radius: 0;
         border-bottom: 1px solid var(--rule);
+        cursor: zoom-in;
     }
     .shot figcaption {
         padding: 0.6rem 0.8rem;
