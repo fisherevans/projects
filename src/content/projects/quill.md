@@ -5,7 +5,7 @@ summary: >
     A personal AI picture-book studio. Describe the book you want and it writes the
     story, illustrates every page in a consistent style, lays out the text, and hands
     back a portrait book you can read on a phone.
-tech: [Go, React, SQLite, Claude API, k3s]
+tech: [Go, React, SQLite, Gemini API, k3s]
 status: active
 year: 2026
 order: 100
@@ -16,9 +16,9 @@ thumbnail: ./media/quill-hero.png
 # Private repo - no source link.
 source:
     repo: quill
-    commit: 2e3ae5c
-    changelog: changelog/2026-08-14-react-app-and-workshop-flow.md
-    captured: 2026-08-16
+    commit: 946bbaf
+    changelog: changelog/2026-08-16-persona-editor.md
+    captured: 2026-08-18
 ---
 
 Quill is a picture-book studio I built for my own kids. You give it a premise - a
@@ -59,6 +59,20 @@ The generation runs as a pipeline, not a single prompt:
 - Text sits directly on the art. When the auto-placement fights the picture you can drag
   the block, nudge individual lines, or recolor the ink per page - and hand edits are
   kept, never silently recomputed.
+- A book stays a draft until you publish it, so the library only holds the ones you're
+  happy with. Published books live on named shelves you arrange like rows on a streaming
+  home screen, with a search view for finding one by title. Drafts and anything you
+  archive stay out of the way but recoverable.
+
+## Building your own voices and styles
+
+The author voices, illustration styles and page-composition directors are editable, and
+you build them from **source material** rather than by writing prompts. Point a persona at
+a few books, authors, or reference images you like - searched and composed right in the
+app - add an optional note, and it distils a reusable voice or look. What it produces is
+described from first principles (an original style, never a named artist), consistent with
+keeping the whole thing personal-use and keeping other people's names out of what gets
+generated.
 
 ## Notes
 
