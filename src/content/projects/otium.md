@@ -16,23 +16,24 @@ thumbnail: ./media/otium-hero.png
 repo: https://github.com/fisherevans/otium
 source:
     repo: otium
-    commit: d83c881
-    changelog: changelog/2026-08-19-solved-session-card.md
+    commit: a02a44b
+    changelog: changelog/2026-08-19-card-polish-avatars.md
     captured: 2026-08-19
 screenshots:
     - src: ./media/otium-card-video.png
       caption: >
-          A 9:16 video card. The player is contained rather than cropped, the headline
-          keeps both its lines, and the action row still sits above the fold - the case
-          that used to break the layout.
+          A 9:16 video card from my own feed. The vertical player fills most of the
+          card without being cropped, the creator carries their own avatar, and the
+          action row still sits above the fold - the case that used to break the layout.
       captured: 2026-08-19
-      commit: d83c881
-    - src: ./media/otium-card-news.png
+      commit: a02a44b
+    - src: ./media/otium-card-wide.png
       caption: >
-          A news card: Section and Topic over the headline, the source and a relative
-          date on one line, a 4:5 photo fit to the box, and one identical action row.
+          The same card shape holds a landscape video: Section and Topic in one quiet
+          monospace line, the creator and a relative date beneath the headline, the
+          16:9 thumbnail fit to the box rather than cropped, and one identical action row.
       captured: 2026-08-19
-      commit: d83c881
+      commit: a02a44b
 ---
 
 Otium is a reader for people who want to read *less*, on purpose. Most feed apps are
@@ -61,10 +62,11 @@ a session from your sources, and it shows its work on why each item made the cut
 - You move through one card at a time on a locked scroll-snap. Advancing past something
   you didn't open *is* the skip, so there's no separate skip button and no stack to blur
   through.
-- Each card has the same quiet shape whatever it holds: the Section and Topic over the
-  headline, the source and a relative date on one line under it, the media, and one
-  identical row of actions. A news photo, a portrait video, and an audio episode all
-  read the same way, so the layout never surprises you between items.
+- Each card has the same quiet shape whatever it holds: the Section and Topic in one
+  monospace line over the headline, the source - carrying its own avatar - and a
+  relative date beneath it, the media, and one identical row of actions. A news photo,
+  a portrait video, and an audio episode all read the same way, so the layout never
+  surprises you between items.
 - There's deliberately no timer, unread count, or progress bar during a session. An
   earlier countdown got cut because watching it felt like racing a clock. The only
   persistent control is "End session."
