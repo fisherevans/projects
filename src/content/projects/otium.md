@@ -16,9 +16,24 @@ thumbnail: ./media/otium-hero.png
 repo: https://github.com/fisherevans/otium
 source:
     repo: otium
-    commit: 007283c
-    changelog: changelog/2026-08-12-daily-use-ux-pass.md
-    captured: 2026-08-14
+    commit: a02a44b
+    changelog: changelog/2026-08-19-card-polish-avatars.md
+    captured: 2026-08-19
+screenshots:
+    - src: ./media/otium-card-video.png
+      caption: >
+          A 9:16 video card from my own feed. The vertical player fills most of the
+          card without being cropped, the creator carries their own avatar, and the
+          action row still sits above the fold - the case that used to break the layout.
+      captured: 2026-08-19
+      commit: a02a44b
+    - src: ./media/otium-card-wide.png
+      caption: >
+          The same card shape holds a landscape video: Section and Topic in one quiet
+          monospace line, the creator and a relative date beneath the headline, the
+          16:9 thumbnail fit to the box rather than cropped, and one identical action row.
+      captured: 2026-08-19
+      commit: a02a44b
 ---
 
 Otium is a reader for people who want to read *less*, on purpose. Most feed apps are
@@ -47,6 +62,11 @@ a session from your sources, and it shows its work on why each item made the cut
 - You move through one card at a time on a locked scroll-snap. Advancing past something
   you didn't open *is* the skip, so there's no separate skip button and no stack to blur
   through.
+- Each card has the same quiet shape whatever it holds: the Section and Topic in one
+  monospace line over the headline, the source - carrying its own avatar - and a
+  relative date beneath it, the media, and one identical row of actions. A news photo,
+  a portrait video, and an audio episode all read the same way, so the layout never
+  surprises you between items.
 - There's deliberately no timer, unread count, or progress bar during a session. An
   earlier countdown got cut because watching it felt like racing a clock. The only
   persistent control is "End session."
@@ -55,9 +75,34 @@ a session from your sources, and it shows its work on why each item made the cut
   the reel freezes on the current item and drops in an end-card instead of yanking you
   out, then shows a plain recap of where the time went. No score, no "come back soon."
 
+## The card that solves its own layout
+
+One item per screen is the whole idea, and it only works if the item actually fits. It
+did not, for a while. A 9:16 video clamped its headline to one line and shoved its own
+action row off the bottom of the card, past where anything could scroll it back. A 4:5
+press photo got cropped to a letterbox band. A long headline was cut with an ellipsis.
+The card was a fixed-height box being filled by CSS rules that could not see how much
+room they had.
+
+So the card stopped guessing and started measuring. Instead of dividing its height with
+static styles, it lays the content out, measures what it got, and fits it to the box by
+giving things up in a fixed order: the excerpt goes first, then the hero's share of the
+card, then the type size steps down a ramp. What it will not give up is spelled out -
+it never truncates the headline, never crops the media, and never puts an action out of
+reach. Then it centres what is left by measuring the real slack and padding half of it,
+rather than the CSS `center` that would push a full card's headline off the top with no
+way back.
+
+It has to measure because the right answer depends on the item. A vertical video wants
+every pixel of the card; a three-line news item wants almost none of them. Predicting it
+kept losing to reality - margins that looked even on paper were not, because each line of
+text carries half its leading as empty space and that differs row to row. Every layout
+pass now ends by measuring what it just did, against a lab that renders the real card
+through the real engine so a preview can't drift from the thing it previews.
+
 ## Where it's going
 
-It's mid-way through a v2 redesign that reorganizes everything into a Sections and Topics
-tree, moves to genuinely time-based sessions, and adds calm, descriptive analytics (what
-you read, not how long you stared). It runs as a Go API plus a React SPA on my Kubernetes
-cluster, behind my own single-sign-on.
+The feed is organized into a Sections and Topics tree, and sessions are moving toward
+being genuinely time-based, with calm, descriptive analytics - what you read, not how
+long you stared. It runs as a Go API plus a React SPA on my Kubernetes cluster, behind
+my own single-sign-on.
