@@ -18,7 +18,7 @@ source:
     repo: otium
     commit: a02a44b
     changelog: changelog/2026-08-19-card-polish-avatars.md
-    captured: 2026-08-19
+    captured: 2026-08-21
 screenshots:
     - src: ./media/otium-card-video.png
       caption: >
@@ -33,6 +33,20 @@ screenshots:
           monospace line, the creator and a relative date beneath the headline, the
           16:9 thumbnail fit to the box rather than cropped, and one identical action row.
       captured: 2026-08-19
+      commit: a02a44b
+    - src: ./media/otium-card-article.png
+      caption: >
+          An RSS item reads the same way a video does - here a webcomic from my feed,
+          with the strip as the media and a Read button that opens it in place. Same
+          breadcrumb, same byline, same single row of actions.
+      captured: 2026-08-21
+      commit: a02a44b
+    - src: ./media/otium-reader.png
+      caption: >
+          Tapping Read opens the article in a distraction-free reader: the full text set
+          in the reading serif with a comfortable measure, the source and date up top,
+          and just Save and Open-source at the end. No sidebars, no related-links rail.
+      captured: 2026-08-21
       commit: a02a44b
 ---
 
@@ -67,6 +81,11 @@ a session from your sources, and it shows its work on why each item made the cut
   relative date beneath it, the media, and one identical row of actions. A news photo,
   a portrait video, and an audio episode all read the same way, so the layout never
   surprises you between items.
+- When an item has a full text - a blog post, an article, a webcomic - Read opens it
+  in place in a stripped-down reader: the body set in the reading serif, the source and
+  date at the top, and nothing else competing for attention. No sidebars, no
+  recirculation rail, no "you might also like." You read the thing and back out to the
+  session where you left it.
 - There's deliberately no timer, unread count, or progress bar during a session. An
   earlier countdown got cut because watching it felt like racing a clock. The only
   persistent control is "End session."
